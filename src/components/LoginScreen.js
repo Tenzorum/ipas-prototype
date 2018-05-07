@@ -41,8 +41,6 @@ class LoginScreen extends Component {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
-    let pageSize = this._getItemCountForView();
-    this.setState({pageSize});
 
     web3.eth.subscribe('logs', {
       address: '0x37386A1c592Ad2f1CafFdc929805aF78C71b1CE7',
@@ -130,11 +128,10 @@ class LoginScreen extends Component {
 
   render() {
     const { qrCodeData, viewQRCode, viewSignInButton, status, loggedIn, myPublicAddress, ethBalance } = this.state;
-    const { currentPage, height, width, pageSize } = this.state;
+    const { currentPage, height, width } = this.state;
     console.log('CurrentPage: ', currentPage);
     console.log('Height: ',  height);
     console.log('Width: ', width);
-    console.log('PageSize: ', pageSize);
     let className;
     myPublicAddress && !ethBalance ? this._getEthAddress() : null;
 
